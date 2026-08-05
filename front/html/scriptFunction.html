@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        함수(function) vs 메서드(method) 
+        arrow function vs lambda expression 
+        - 코드블럭(특정 기능을 수행하기 위한)
+        */
+        // definition
+        function test(x, y) {
+            return x + y ; 
+        };
+        // calling 
+        let result = test(10, 20); 
+        console.log(`debug >>>> result ${result}`); 
+
+        let btnHandler = function() {
+            console.log(`익명의 함수입니다.`); 
+        };
+        console.log(`debug >>>> function type ${ typeof btnHandler }`); 
+        btnHandler();
+
+        // es6 : arrow function
+        let arrowFunc = () => {
+            console.log(`화살표 함수 호출!!`); 
+        };
+        arrowFunc();
+        let add = (a,b) => {
+            return a + b ; 
+        };
+        console.log(`debug >>>> add function ${ add(10,30) }`); 
+        
+        let obj = {
+            name  : "jslim",
+            study : function() {
+                return ["html", "script", "css"];
+            }
+        };
+        let ary = obj.study();
+        console.log(`debug >>>> ary ` , ary); 
+        
+        // es6 
+        // 구조분해 - Destructuring 
+        let html   = "html";
+        let script = "script";
+        let css    = "css";
+        obj = {
+            name  : "jslim",
+            study : function() {
+                return {
+                    html, 
+                    script, 
+                    css 
+                }
+            }
+        };
+        // let instance = obj.study();
+        // console.log(`debug >>>> html ` , instance.html); 
+
+        // let {script, html, css} = obj.study();
+        // console.log(`debug >>>> html ` , html); 
+
+
+        console.log(`debug >>>> 배열변수와 함께 사용되는 함수와 람다식`);  
+        const ages = [20, 24, 26, 30, 34, 35]; 
+
+        const newAges = ages.map( age => age * 2) ;
+        console.log(`debug >>>> newAges ` , newAges); 
+
+        const evenAges = ages.filter( age => age%2 === 0 );
+        console.log(`debug >>>> evenAges ` , evenAges); 
+
+        /*
+        Q1)
+        - email 값을 키로하고 nickName 값을 값으로하는 새로운 객체를 만들려고 한다.
+        - 즉, 배열을 가공해서 하나의 객체로 합치는 것  
+        hint)
+        - array : reduce(acc, cur, idx, ary) 함수 
+        */
+        const userAry = [
+            { email : "naver.com" , nickName : "IronMan"},
+            { email : "google.com", nickName : "Bob"},
+            { email : "daum.com"  , nickName : "Alice"}
+        ];
+        const reduceAry = userAry.reduce( (obj, cur) => {
+            obj[cur.email] = cur.nickName ; 
+            return obj ;
+        }, {});
+        console.log(`debug >>>> reduceAry ` , reduceAry); 
+    </script>
+</body>
+</html>
+
+
+
+
+

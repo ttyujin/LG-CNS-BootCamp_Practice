@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+    //문법 정리
+    let objOriginal = {
+    a: 10,
+    b: 20
+};
+
+// let objNew = objOriginal;
+// console.log(`debug === `, objNew === objOriginal);
+// objNew.a = 20;
+// console.log(`debug objNew `, objNew);
+// console.log(`debug objOriginal `, objOriginal);
+console.log(`spread operator`);
+objNew={...objOriginal};
+console.log(`debug objNew `, objNew);
+console.log(`debug objOriginal `, objOriginal);
+
+//22부터 25줄까지 개념 알아두기
+//루프를 돌리고 original 과 new randering을 구분해서 하는 것이 효율적이다.
+//이를 spread operator라고 한다.
+
+//구조분해(destructing)
+//props (내장객체)
+//props.a, props.b
+//a,b
+    let {a,b} = objOriginal;
+
+    let ary=[1,2,3];
+    let newAry={...ary}; //37,38 둘다 가능
+
+//optional chaining
+//객체의 속성값의 유효성을 체크할 수 있다.
+//?. 사용
+    const user={
+        name:{
+            first:"Tak", //축약문법을 사용함
+            last:"Yujin"
+        },
+        address:{
+            city:"seoul",
+            postcode:"123456"
+        }
+        
+        
+    }
+  //??에서 null값이 나오는지 undefined가 나오는지 알아야된다.
+        //널 병합 연산자(??)
+        const city = user.address?.city ??'busan';
+
+        //Enhanced object Literal = 축약 문법
+        let lang='react.js'
+
+        let subject ={
+            //lang:lang
+            lang,
+            coding(){
+                console.log('coding'); //축약문법 사용
+            }
+        }
+
+    </script>
+</body>
+</html>

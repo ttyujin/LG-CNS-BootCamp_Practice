@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    background: #f7f4ef;
+    font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    color: #3b2a1e;
+}
+
+/* h1과 img를 감싸는 첫 번째 div */
+body > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+}
+
+img {
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 200ms ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+#btn {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    background-color: #6f4e37;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+}
+
+#btn:hover {
+    background-color: #543a29;
+}
