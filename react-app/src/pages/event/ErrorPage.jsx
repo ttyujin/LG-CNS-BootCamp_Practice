@@ -1,12 +1,19 @@
+import {Link} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
 const ErrorPage=()=>{
+
+    const [searchParams]=useSearchParams();
+    const category=searchParams.get('category');
+    const sort=searchParams.get('sort');
     
     return(    
         <div>
             <center>
-                로그인 실패
+                로그인 실패({category},{sort})
             </center>
             &nbsp;&nbsp;&nbsp;
-            <a href="/">랜딩페이지로</a>
+            <Link to="/">랜딩페이지로</Link>
         </div>
     )
 

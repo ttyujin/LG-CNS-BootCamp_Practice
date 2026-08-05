@@ -48,11 +48,18 @@ import TestRouterApp from './TestRouterApp';
 //   <EventPage />
 // );
 
-import EventPage from './TestRouterApp';
+// import EventPage from './TestRouterApp';
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <TestRouterApp />
+// );
+
+import EventPage from './pages/rendering/RenderingPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <TestRouterApp />
+  <RenderingPage />
 );
+
 
 
 // If you want to start measuring performance in your app, pass a function

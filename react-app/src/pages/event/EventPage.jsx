@@ -28,16 +28,21 @@ const EventPage = () => {
                         // json web token(jwt) - token(header)
                         // response.headers.get('Authorization');
                         // localStorage.setItem('token','token-xxxxxxxxx');
+                        //react component transition
 
                         const user = ary[0];
 
                         localStorage.setItem('userName', user.name);
 
-                        moverUrl('/success');
-
-                    }else{
-                        moverUrl('/error');
-                    }
+                 moverUrl('/success', {
+                        state: {
+                            user,
+                            from:'/signIn'
+                        } //post방식
+                    });
+                } else {
+                    moverUrl('/error?category=react&sort=latest'); //get방식
+                       }
                 })
                 .catch(err => {
                     console.log(`debug >>>> error : `, err);
