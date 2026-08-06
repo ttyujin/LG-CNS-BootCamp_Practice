@@ -1,24 +1,36 @@
 {
-   "comment": [
+  "users": [
+    {
+      "id": 1,
+      "name": "탁유진",
+      "email": "ttyujin@example.com",
+      "password": "1234"
+    },
+    {
+      "name": "탁유진",
+      "email": "tyusejin@gmail.com",
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "name": "탁유진",
+      "email": "tyusejin@naver.com",
+      "password": "1234",
+      "id": 3
+    }
+  ],
+  "blogs" : [
         {
-            "writer": "임정섭",
-            "comment": "강사님과 함께하는 즐거운 React"
+            "title":"til 작성",
+            "content":"component",
+            "category":"front-end",
+            "email":"tyusejin@gmail.com"
         },
         {
-            "writer": "차현준",
-            "comment": "강사님과 함께하는 재미없는 React"
-        },
-        {
-            "writer": "박선아",
-            "comment": "강사님과 함께하는 즐겁지아니한 React"
-        }
-    ],
-
-    "users": [
-        {
-            "email":"tyusejin@gmail.com",
-            "pswd":"1234",
-            "name":"탁유진"
+            "title":"링거(술)",
+            "content":"java",
+            "category":"back-end",
+            "email":"tyusejin@gmail.com"
         }
     ]
 }

@@ -1,7 +1,7 @@
-import React            from 'react';
-import ReactDOM         from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import reportWebVitals  from './reportWebVitals';
+import reportWebVitals from './reportWebVitals';
 import TestRouterApp from './TestRouterApp';
 
 
@@ -54,10 +54,20 @@ import TestRouterApp from './TestRouterApp';
 //   <TestRouterApp />
 // );
 
-import EventPage from './pages/rendering/RenderingPage';
+// import RenderingPage from './pages/rendering/RenderingPage';
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// root.render(
+//   <RenderingPage />
+// );
+
+import ToyApp from './ToyApp';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <RenderingPage />
+  <ToyApp />
 );
 
 

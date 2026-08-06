@@ -1,17 +1,18 @@
 import Button from "../styled/Button";
 
-
 const LoginButton = (props) => {
-    const logoutHandler=(setFlag)=>{
-        setFlag(fasle);
+    const loginHandler = (setFlag) => {
+        setFlag(true);
     }
-    return(
+
+    return (
         <div>
-            <Button title={`로그아웃`}
-                        onClick={()=>logoutHandler(props.isLogin)}/>
+            <Button
+                title={`로그인`}
+                onClick={() => loginHandler(props.setFlag)}
+            />
         </div>
     )
-
 }
 
 export default LoginButton;

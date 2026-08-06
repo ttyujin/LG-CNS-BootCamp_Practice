@@ -4,7 +4,7 @@ import {useState} from "react";
 
 const Greeting=(props)=>{
     {
-        return props.flag ? <UserGreeting/>:<GusetGreeting/>
+        return props.flag ? <UserGreeting/>:<GuestGreeting/>
     }
 }
 

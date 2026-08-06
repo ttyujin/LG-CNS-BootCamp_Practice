@@ -1,21 +1,23 @@
 import {useState} from "react";
 import LogoutButton from "../../components/rendering/LogoutButton";
-// import LoginButton from 
+import Greeting from "../../components/rendering/Greeting";
+import LoginButton from "../../components/rendering/LoginButton";
 
 const RenderingPage =()=>{
     
     //script
     const [flag,setFlag]=useState(false);
+
     //ui
     return(
         <div>
             <Greeting flag={flag}/>
             {
                 flag?
-                    <LogoutButton isLogin={setFlag}/>
+                    <LogoutButton setFlag={setFlag}/>
                 :
                    
-                <LoginButton isLogin={}/>
+                    <LoginButton setFlag={setFlag}/>
             }
         </div>
     )

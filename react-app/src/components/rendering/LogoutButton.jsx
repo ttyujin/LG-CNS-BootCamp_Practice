@@ -3,12 +3,12 @@ import Button from "../styled/Button";
 
 const LogoutButton = (props) => {
     const logoutHandler=(setFlag)=>{
-        setFlag(fasle);
+        setFlag(false);
     }
     return(
         <div>
             <Button title={`로그아웃`}
-                        onClick={()=>logoutHandler(props.isLogin)}/>
+                        onClick={()=>logoutHandler(props.setFlag)}/>
         </div>
     )
 
