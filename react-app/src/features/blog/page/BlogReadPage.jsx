@@ -1,8 +1,5 @@
-
-
-const BlogReadPage=()=>{
-
+const BlogReadPage = () => {
 
 }
 
-export default BlogReadPage;
+export default BlogReadPage ;

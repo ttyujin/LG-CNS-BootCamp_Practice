@@ -1,11 +1,11 @@
-import UserGreeting from "./UserGreeting";
-import GuestGreeting from "./GuestGreeting";
-import {useState} from "react";
+import GuestGreeting    from "./GuestGreeting";
+import UserGreeting     from "./UserGreeting";
 
-const Greeting=(props)=>{
+
+const Greeting = (props) => {
     {
-        return props.flag ? <UserGreeting/>:<GuestGreeting/>
+        return props.flag ? <UserGreeting /> : <GuestGreeting />
     }
 }
 
-export default Greeting;
+export default Greeting ;

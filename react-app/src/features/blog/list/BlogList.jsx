@@ -1,5 +1,5 @@
-import styled from"styled-components";
-import BlogItem from "../item/BlogItem";
+import styled       from "styled-components";
+import BlogItem     from "../item/BlogItem";
 
 
 const Wrapper = styled.div`
@@ -13,13 +13,13 @@ const Wrapper = styled.div`
             margin-bottom: 16px;
         }
     }
-        gap:16px;
+    gap: 16px;
 `;
 
-const BlogList=(props)=>{
+const BlogList = (props) => {
     return(
         <Wrapper>
-           {   props.ary && props.ary.length > 0 ?
+            {   props.ary && props.ary.length > 0 ?
                 props.ary.map((blog, idx) => {
                     return <BlogItem    key={idx}
                                         blog={blog} />
@@ -29,7 +29,6 @@ const BlogList=(props)=>{
             }
         </Wrapper>
     )
-
 }
 
-export default BlogList;
+export default BlogList ;

@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React            from 'react';
+import ReactDOM         from 'react-dom/client';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
-import TestRouterApp from './TestRouterApp';
+import reportWebVitals  from './reportWebVitals';
+
 
 
 
@@ -45,30 +45,30 @@ import TestRouterApp from './TestRouterApp';
 // import EventPage from './pages/event/EventPage';
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
-//   <EventPage />
+//     <EventPage />
 // );
 
-// import EventPage from './TestRouterApp';
+
+// router 
+// import TestRouterApp from './TestRouterApp';
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
-//   <TestRouterApp />
+//     <TestRouterApp />
 // );
 
 // import RenderingPage from './pages/rendering/RenderingPage';
-
 // const root = ReactDOM.createRoot(document.getElementById('root'));
-
 // root.render(
-//   <RenderingPage />
+//     <RenderingPage />
 // );
 
+
 import ToyApp from './ToyApp';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
-  <ToyApp />
+    <ToyApp />
 );
+
 
 
 

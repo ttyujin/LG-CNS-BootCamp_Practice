@@ -21,13 +21,12 @@ const TitleText = styled.p`
     font-weight: bold ;
 `;
 
-const BlogItem=(props)=>{
+const BlogItem = (props) => {
     return(
         <Wrapper>
             <TitleText>{props.blog.title}</TitleText>
         </Wrapper>
     )
-
 }
 
-export default BlogItem;
+export default BlogItem ;

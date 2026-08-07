@@ -1,17 +1,16 @@
 import Button       from '../../components/styled/Button' ;
 import { useState, useEffect } from 'react';
 
-
 const CapacityPage = () => {
     // 고민?
     // 해당변수는 양방향 실시간 소통이 이루어저야한다...어떻게?
     // let cnt = 0 ; 
     // solution -> hook state : useState()
-    const capacity=10;
+    const capacity = 10 ; 
 
-    let [cnt, setCnt] = useState(0);
-    let [full,setFull]=useState(false);
-    let [empty,setEmpty]=useState(false);
+    let [cnt, setCnt]     = useState(0);
+    let [full, setFull]   = useState(false);
+    let [empty, setEmpty] = useState(false);
 
 
     const upCntHandler = (e) => {
@@ -31,8 +30,8 @@ const CapacityPage = () => {
     useEffect( () => {
         console.log(`debug >>>> CapacityPage lifecycle update `);
         console.log(`debug >>>> side effect render cnt :  ${cnt}`);
-        setFull(cnt>=capacity);
-        setEmpty(cnt<=0);
+        setFull(cnt >= capacity);
+        setEmpty(cnt <= 0) ;
     }, [cnt]) ;  
 
 
@@ -48,10 +47,10 @@ const CapacityPage = () => {
             <p>입장인원 : {cnt} </p> 
             <Button     title="입장" 
                         onClick={(e) => upCntHandler()}
-                        disabled={full}/>
+                        disabled={full} />
             <Button     title="퇴장" 
                         onClick={(e) => downCntHandler()}
-                        disabled={empty}/>
+                        disabled={empty} />
         </div>
     );
 }

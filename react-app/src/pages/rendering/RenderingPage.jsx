@@ -1,26 +1,25 @@
-import {useState} from "react";
+import { useState } from "react";
+import Greeting     from "../../components/rendering/Greeting";
 import LogoutButton from "../../components/rendering/LogoutButton";
-import Greeting from "../../components/rendering/Greeting";
 import LoginButton from "../../components/rendering/LoginButton";
 
-const RenderingPage =()=>{
+const RenderingPage = () => {
     
-    //script
-    const [flag,setFlag]=useState(false);
+    // script 
+    const [flag, setFlag] = useState(false); 
 
-    //ui
-    return(
+    // ui 
+    return (
         <div>
-            <Greeting flag={flag}/>
+            <Greeting flag={flag} /> 
             {
-                flag?
-                    <LogoutButton setFlag={setFlag}/>
+                flag ?
+                    <LogoutButton   isLogin={setFlag}/>
                 :
-                   
-                    <LoginButton setFlag={setFlag}/>
+                    <LoginButton    isLogin={setFlag}/>
             }
         </div>
     )
 }
 
-export default RenderingPage;
+export default RenderingPage ;

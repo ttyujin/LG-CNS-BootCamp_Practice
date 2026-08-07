@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState }  from 'react';
+import styled               from 'styled-components';
 import { Link, useNavigate } from "react-router-dom";
-import { touchRippleClasses } from '@mui/material';
-import api from "../../../api/axios";
+import api from '../../../api/axios';
 
 const Container = styled.div`
   display: flex;
@@ -76,76 +75,85 @@ const TextLink = styled(Link)`
   }
 `;
 
+// npm install styled-components @mui/material @mui/icons-material @emotion/react @emotion/styled
+
 const SignInPage = () => {
 
-  const [form, setForm] = useState({
-    email: '',
-    password: ''
-  });
-  const moveUrl = useNavigate();
+    // state 
+    const [form, setForm] = useState({
+        email : '', password : ''
+    });
+    const moveUrl = useNavigate();
 
-  const keyHandler = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
-
-  /* 
-  CRUD
-  axios:get(),post(),put()|patch(),delete();
-  QueryString(url 뒤에 직접 바인딩) -> router에서도 확인이 가능하다!!!
-
-  api.get('url?email=xxxxx&password=xxxxx);
-  api.get('url',{
-      params:{
-      email:form.email,
-      password:form.password
-      }
-      })
-  */
-
-  const signInHandler = async (e) => {
-    e.preventDefault();
-
-    await api.get(`/users?email=${form.email}&password=${form.password}`)
-      .then(response => {
-        console.log(`debug >>>> axios request success : `, response);
-        if (response.status === 200) {
-          localStorage.setItem('user', response.data[0].email);
-
-          moveUrl('/blogs/index');
+    // 기존값을 유지하면서 현재 입력된 필드에 대한 상태변화(업데이트)를 처리 
+    const keyHandler = (e) => {
+        const {name, value} = e.target ;
+        setForm({...form, [name]:value});
+    };
+    
+    /*
+    CRUD
+    - axios : get(), post(), put() | patch(), delete();
+    QueryString(url 뒤에 직접 바인딩) -> router에서도 사용가능 확인!!
+    - api.get('url?email=xxxx&password=xxxxx');
+    - api.get('url' , {
+        params : {
+            email : form.email,
+            password : form.password
         }
-      })
-      .catch(error => {
-        console.log(`debug >>>> axios request error : `, error);
-      });
-  }
+    })
+    DB : SQL(Structor Query Language) 
+    select  name, email, password 
+    from    table
+    where   email = ? and password = ? 
+    */
+    const signInHandler = async (e) => {
+        e.preventDefault() ;
 
+        // json-server version
+        await api.get(`/users?email=${form.email}&password=${form.password}`)
+                .then( response => {
+                    console.log(`debug >>>> axios request success` , response);  
+                    if(response.status === 200) {
+                        
+                        localStorage.setItem('user' , response.data[0].email) ;
+                        // 추후 추가작업
+                        // header access token 가져오고 싶을 수 있어야함.
+                        // 인증, 인가 -> JWT or spring security
 
-  return (
-    <Container>
-      <FormWrapper>
-        <Title>SignIn</Title>
-        <form onSubmit={signInHandler}>
-          <Input
-            type='email'
-            name='email'
-            placeholder="이메일 입력하세요"
-            value={form.email}
-            onChange={(keyHandler)}
-          />
-          <Input
-            type='password'
-            name='password'
-            placeholder="패스워드 입력하세요"
-            value={form.password}
-            onChange={(keyHandler)}
-          />
-          <Button type='submit'>로그인하기</Button>
-        </form>
-        <TextLink to='/'>다시 회원가입</TextLink>
-      </FormWrapper>
-    </Container>
-  )
+                        moveUrl('/blogs/index') ;
+                    }
+
+                })
+                .catch( error => {
+                    console.log(`debug >>>> axios request error` , error); 
+                });
+        
+        // spring version
+    }
+
+    return(
+        <Container>
+            <FormWrapper>
+                <Title>SignIn</Title>
+                <form onSubmit={signInHandler}>
+                    <Input  type='email' 
+                            name='email'
+                            placeholder="이메일 입력하세요"
+                            value={form.email}
+                            onChange={keyHandler}/>
+                    <Input  type='password' 
+                            name='password'
+                            placeholder="패스워드 입력하세요"
+                            value={form.password}
+                            onChange={keyHandler}/>
+                    <Button type='submit'>SignIn</Button>
+                </form>
+                <TextLink to='/'>회원가입</TextLink>
+            </FormWrapper>
+        </Container>
+    )
 }
 
-export default SignInPage;
+export default SignInPage ;
+

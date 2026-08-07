@@ -14,14 +14,14 @@ const StyledTextArea = styled.textarea`
     margin-top  : 16px ;
 `;
 
-const TextInput=({height,value,handler,disabled})=>{
+const TextInput = ({height, value, handler, disabled}) => {
     return(
-        <StyledTextArea height={height}
-                        value={value}
-                        handler={handler}
-                        disabled={disabled}/>
+        <StyledTextArea 
+                    height={height}
+                    value={value}
+                    handler={handler}
+                    disabled={disabled} />
     );
-
 }
 
-export default TextInput;
+export default TextInput ; 

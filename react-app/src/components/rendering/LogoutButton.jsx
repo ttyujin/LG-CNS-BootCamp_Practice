@@ -1,17 +1,14 @@
 import Button from "../styled/Button";
 
-
 const LogoutButton = (props) => {
-    const logoutHandler=(setFlag)=>{
-        setFlag(false);
+    const logoutHandler = (setFlag) => {
+        setFlag(false) ;
     }
-    return(
+    return (
         <div>
             <Button title={`로그아웃`}
-                        onClick={()=>logoutHandler(props.setFlag)}/>
+                    onClick={() => logoutHandler(props.isLogin)}/>
         </div>
     )
-
 }
-
-export default LogoutButton;
+export default LogoutButton ;

@@ -1,12 +1,11 @@
-import {useState} from "react";
 
 const UserGreeting = () => {
-    return(
+    return (
         <div>
-            <h1>환영합니다. {`000`}님</h1>
+            <h1>환영합니다......{`OOO`}님</h1>
         </div>
     )
-
 }
 
-export default UserGreeting;
+export default UserGreeting ;
+

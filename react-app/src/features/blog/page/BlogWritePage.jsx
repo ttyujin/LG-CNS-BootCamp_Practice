@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import Button from "../../../components/styled/Button";
-import TextInput from "../../../components/styled/TextInput";
+import styled       from "styled-components";
+import Button       from "../../../components/styled/Button";
+import TextInput    from "../../../components/styled/TextInput";
 import { useNavigate } from "react-router-dom";
+
+
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -16,8 +18,10 @@ const Container = styled.div`
     width: 100%;
     max-width: 720px;
 
-    & > *:not(:last-child) {
-        margin-bottom: 16px;
+    & > * {
+        :not(:last-child) {
+            margin-bottom: 16px;
+        }
     }
 `;
 
@@ -27,6 +31,8 @@ const WelcomeMessage = styled.div`
     margin-bottom: 16px;
     color: #333;
 `;
+
+// category UI 
 const CategoryLabel = styled.div`
     font-size: 13px;
     font-weight: 600;
@@ -76,27 +82,26 @@ const CategoryChip = styled.button`
         border-color: #6366f1;
     }
 `;
-const BlogWritePage=()=>{
 
+
+const BlogWritePage = () => {
     const user = localStorage.getItem('user');
-    const CATEGORIES = ["전체", "개발", "생활", "취미", "일상"];
+    const CATEGORIES = ["개발", "생활", "취미", "일상"];
 
-    const moveUrl=useNavigate();
+    const moveUrl = useNavigate();
 
     return(
         <Wrapper>
             <Container>
+                {user && <WelcomeMessage>{user}님 환영합니다.</WelcomeMessage>}
 
-                <WelcomeMessage>
-                    {user}님 환영합니다.
-                </WelcomeMessage>
-
+                {/* 카데코리 선택 */} 
                 <CategoryWrapper>
                     <CategoryLabel>카테고리</CategoryLabel>
                     <CategoryRow>
                         {
-                            CATEGORIES.map((category,idx)=>{
-                                return <CategoryChip key={idx}
+                            CATEGORIES.map((category, idx) => {
+                                return <CategoryChip   key={idx}
                                                 type='button'>
                                     {category}
                                 </CategoryChip>
@@ -104,21 +109,23 @@ const BlogWritePage=()=>{
                         }
                     </CategoryRow>
                 </CategoryWrapper>
-
-                <TextInput height={20}/>
-
-                <TextInput height={280}/>
-                <Button title='글 작성하기'/>
+                
+                {/* title */}
+                <TextInput height={20} />
+                
+                {/* content */}
+                <TextInput height={280} />
+                
+                {/* button */}
+                <Button title='글 작성하기' />
                 &nbsp;&nbsp;&nbsp;
-                <Button title='이전'
-                onClick={()=>{
-                    moveUrl('/blogs/index');
-                }}/>
-
+                <Button title='이전' 
+                        onClick={() => {
+                            moveUrl('/blogs/index') ;
+                        }}/>
             </Container>
         </Wrapper>
     )
-
 }
 
-export default BlogWritePage;
+export default BlogWritePage ;
