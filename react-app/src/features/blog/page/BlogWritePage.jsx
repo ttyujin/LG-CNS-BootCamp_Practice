@@ -1,7 +1,9 @@
 import styled       from "styled-components";
 import Button       from "../../../components/styled/Button";
 import TextInput    from "../../../components/styled/TextInput";
+import {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../../api/axios"
 
 
 
@@ -17,11 +19,6 @@ const Wrapper = styled.div`
 const Container = styled.div`
     width: 100%;
     max-width: 720px;
-
-    & > * {
-        :not(:last-child) {
-            margin-bottom: 16px;
-        }
     }
 `;
 
@@ -90,6 +87,37 @@ const BlogWritePage = () => {
 
     const moveUrl = useNavigate();
 
+    const[title,setTitle]=useState('');
+    const[content,setContent]=useState('');
+    const[category,setCategory]=useState('');
+    
+    const writeHandler=async()=>{
+        /*
+        q)
+        - api를 이용한 post 통신: data(category,title,content,email)
+        - status code: 201(Created)
+        - blog index transition
+        */
+        console.log(`debug>>> BlogWritePage writeHandler`);
+        console.log(`debug>>> title ${title},content ${content}, category ${category}`);
+        await api.post('/blogs',{
+                title,
+                content,
+                category,
+                email:user
+        })
+                .then(response => {
+                    console.log(`debug >>>> axios request success`, response);
+                    if(response.status === 201) {
+                        moveUrl('/blogs/index');
+                    }
+                    })
+                .catch(error => {
+                    console.log(`debug >>>> axios request error`, error);
+                        });
+    };
+
+
     return(
         <Wrapper>
             <Container>
@@ -100,10 +128,12 @@ const BlogWritePage = () => {
                     <CategoryLabel>카테고리</CategoryLabel>
                     <CategoryRow>
                         {
-                            CATEGORIES.map((category, idx) => {
-                                return <CategoryChip   key={idx}
-                                                type='button'>
-                                    {category}
+                            CATEGORIES.map((cat, idx) => {
+                                return <CategoryChip    key={idx}
+                                                        type='button'
+                                                        $active={category===cat}
+                                                        onClick={(e)=>{setCategory(cat);}}>
+                                    {cat}
                                 </CategoryChip>
                             })
                         }
@@ -111,13 +141,22 @@ const BlogWritePage = () => {
                 </CategoryWrapper>
                 
                 {/* title */}
-                <TextInput height={20} />
+                <TextInput  height={20} 
+                            value={title}
+                            handler={ (e)=>{
+                                setTitle(e.target.value);
+                            }}/>
                 
                 {/* content */}
-                <TextInput height={280} />
+                <TextInput  height={280} 
+                            value={content}
+                            handler={ (e)=>{
+                                setContent(e.target.value);
+                            }}/>
                 
                 {/* button */}
-                <Button title='글 작성하기' />
+                <Button title='글 작성하기' 
+                        onClick={writeHandler}/>
                 &nbsp;&nbsp;&nbsp;
                 <Button title='이전' 
                         onClick={() => {

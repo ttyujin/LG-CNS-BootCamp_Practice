@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
     width: calc(100% - 32px);
@@ -20,11 +21,30 @@ const TitleText = styled.p`
     font-size: 20px;
     font-weight: bold ;
 `;
+const CategoryBadge = styled.span`
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #6366f1;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+`;
 
-const BlogItem = (props) => {
+const BlogItem = ({blog}) => {
+
+    const moveUrl=useNavigate();
     return(
-        <Wrapper>
-            <TitleText>{props.blog.title}</TitleText>
+        <Wrapper
+            onClick={()=>{
+                moveUrl(`/blogs/read/${blog.id}`);
+            }}>
+            {blog.category && <CategoryBadge>{blog.category}</CategoryBadge>}
+            <TitleText>{blog.title}</TitleText>
         </Wrapper>
     )
 }

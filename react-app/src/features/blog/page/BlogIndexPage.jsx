@@ -153,7 +153,16 @@ const BlogIndexPage = () => {
     const filteredBlogs = selectedCategory === "전체"
         ? blogs
         : blogs.filter((blog) => blog.category === selectedCategory);
-
+    //153~155 다른 방법
+    /*
+    const filteredBlogs=useMemo(()=>{
+        return selectedCategory === "전체"
+                ? blogs
+                : blogs.filter((blog) => blog.category === selectedCategory)
+        },[blogs,selectedCategory]);
+    
+        useMemo 사용. 왜? 성능 계선을 위해서 
+    */
 
     const moveUrl = useNavigate();
     // handler
@@ -184,7 +193,7 @@ const BlogIndexPage = () => {
                     ))}
                 </CategoryRow>
 
-                <BlogList ary={blogs || []}/>
+                <BlogList ary={filteredBlogs || []}/>
 
             </Container>
         </Wrapper>

@@ -19,18 +19,34 @@
       "id": 3
     }
   ],
-  "blogs" : [
-        {
-            "title":"til 작성",
-            "content":"component",
-            "category":"front-end",
-            "email":"tyusejin@gmail.com"
-        },
-        {
-            "title":"링거(술)",
-            "content":"java",
-            "category":"back-end",
-            "email":"tyusejin@gmail.com"
-        }
-    ]
+  "blogs": [
+    {
+      "title": "오늘도 난 gpt를 사용한다",
+      "content": "고맙다 gpt",
+      "category": "일상",
+      "email": "tyusejin@gmail.com",
+      "id": 1
+    },
+    {
+      "title": "코딩하기",
+      "content": "라고 할뻔",
+      "category": "취미",
+      "email": "tyusejin@gmail.com",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "comment": "아니지, 재미나이를 써야지",
+      "id": 2,
+      "blogId": 1,
+      "email": "tyujin@naver.com"
+    },
+    {
+      "blogId": 1,
+      "comment": "아니지 codex써야지",
+      "email": "tyusejin@naver.com",
+      "id": 4
+    }
+  ]
 }
