@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import { CategoryRounded } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
     width: calc(100% - 32px);
@@ -21,6 +22,7 @@ const TitleText = styled.p`
     font-size: 20px;
     font-weight: bold ;
 `;
+
 const CategoryBadge = styled.span`
     display: inline-flex;
     align-items: center;
@@ -37,10 +39,10 @@ const CategoryBadge = styled.span`
 
 const BlogItem = ({blog}) => {
 
-    const moveUrl=useNavigate();
+    const moveUrl = useNavigate();
     return(
         <Wrapper
-            onClick={()=>{
+            onClick={() => {
                 moveUrl(`/blogs/read/${blog.id}`);
             }}>
             {blog.category && <CategoryBadge>{blog.category}</CategoryBadge>}

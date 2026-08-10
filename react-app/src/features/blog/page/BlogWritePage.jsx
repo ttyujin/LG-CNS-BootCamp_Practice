@@ -1,9 +1,10 @@
-import styled       from "styled-components";
-import Button       from "../../../components/styled/Button";
-import TextInput    from "../../../components/styled/TextInput";
-import {useState} from "react";
-import { useNavigate } from "react-router-dom";
-import api from "../../../api/axios"
+import styled           from "styled-components";
+import Button           from "../../../components/styled/Button";
+import TextInput        from "../../../components/styled/TextInput";
+import { useState }     from "react";
+import { useNavigate }  from "react-router-dom";
+import { X }            from "@mui/icons-material";
+import api              from "../../../api/axios";
 
 
 
@@ -19,6 +20,9 @@ const Wrapper = styled.div`
 const Container = styled.div`
     width: 100%;
     max-width: 720px;
+
+    & > *:not(:last-child) {
+        margin-bottom: 16px;
     }
 `;
 
@@ -87,34 +91,38 @@ const BlogWritePage = () => {
 
     const moveUrl = useNavigate();
 
-    const[title,setTitle]=useState('');
-    const[content,setContent]=useState('');
-    const[category,setCategory]=useState('');
+    // state
+    const [title, setTitle]         = useState('');
+    const [content, setContent]     = useState('');
+    const [category, setCategory]   = useState('');
     
-    const writeHandler=async()=>{
+    // handler 
+    const writeHandler = async() => {
         /*
-        q)
-        - api를 이용한 post 통신: data(category,title,content,email)
-        - status code: 201(Created)
-        - blog index transition
+        Q)
+        - api 이용한 post 통신 : data(category, title, content, email)  
+        - status code : 201(Created) 
+        - blog index transition 
         */
-        console.log(`debug>>> BlogWritePage writeHandler`);
-        console.log(`debug>>> title ${title},content ${content}, category ${category}`);
-        await api.post('/blogs',{
-                title,
-                content,
-                category,
-                email:user
-        })
-                .then(response => {
-                    console.log(`debug >>>> axios request success`, response);
+        console.log(`debug >>> BlogWritePage writeHandler `);
+        console.log(`debug >>> title ${title}, content ${content}, category ${category}, email ${user}`);
+        await   api.post('/blogs', {
+                    title,
+                    content,
+                    category,
+                    email : user
+                })
+                .then( response => {
+                    console.log(`debug >>>> axios request success` , response);  
                     if(response.status === 201) {
                         moveUrl('/blogs/index');
                     }
-                    })
-                .catch(error => {
-                    console.log(`debug >>>> axios request error`, error);
-                        });
+                })
+                .catch( error => {
+                    console.log(`debug >>>> axios request error` , error); 
+                });
+
+
     };
 
 
@@ -127,14 +135,18 @@ const BlogWritePage = () => {
                 <CategoryWrapper>
                     <CategoryLabel>카테고리</CategoryLabel>
                     <CategoryRow>
-                        {
+                        {   
+                            // active 상태연결이 필요함!!!
                             CATEGORIES.map((cat, idx) => {
-                                return <CategoryChip    key={idx}
-                                                        type='button'
-                                                        $active={category===cat}
-                                                        onClick={(e)=>{setCategory(cat);}}>
-                                    {cat}
-                                </CategoryChip>
+                                return  <CategoryChip   
+                                                key={idx}
+                                                type='button'
+                                                $active={category === cat}
+                                                onClick={(e) => {
+                                                    setCategory(cat);
+                                                }}>
+                                            {cat}
+                                        </CategoryChip>
                             })
                         }
                     </CategoryRow>
@@ -143,16 +155,16 @@ const BlogWritePage = () => {
                 {/* title */}
                 <TextInput  height={20} 
                             value={title}
-                            handler={ (e)=>{
-                                setTitle(e.target.value);
+                            handler={ (e) => {
+                                setTitle(e.target.value) ;
                             }}/>
                 
                 {/* content */}
                 <TextInput  height={280} 
                             value={content}
-                            handler={ (e)=>{
-                                setContent(e.target.value);
-                            }}/>
+                            handler={ (e) => {
+                                setContent(e.target.value) ;
+                            }} />
                 
                 {/* button */}
                 <Button title='글 작성하기' 

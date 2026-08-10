@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../../../components/styled/Button" ;
 import BlogList from "../list/BlogList";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import api from "../../../api/axios";
 import '../ui/blog.css';
 import { useNavigate } from "react-router-dom";
@@ -150,19 +150,18 @@ const BlogIndexPage = () => {
     
     // 선택된 카테고리에 따라 blogs 필터링
     const [selectedCategory, setSelectedCategory] = useState("전체");
-    const filteredBlogs = selectedCategory === "전체"
-        ? blogs
-        : blogs.filter((blog) => blog.category === selectedCategory);
-    //153~155 다른 방법
-    /*
-    const filteredBlogs=useMemo(()=>{
-        return selectedCategory === "전체"
-                ? blogs
-                : blogs.filter((blog) => blog.category === selectedCategory)
-        },[blogs,selectedCategory]);
+    // case 01
+    // const filteredBlogs = selectedCategory === "전체"
+    //     ? blogs
+    //     : blogs.filter((blog) => blog.category === selectedCategory);
     
-        useMemo 사용. 왜? 성능 계선을 위해서 
-    */
+    // case 02 : useMemo() - 성능개선을 위해서 
+    const filteredBlogs = useMemo(() => {
+        return selectedCategory === "전체"
+            ? blogs
+            : blogs.filter((blog) => blog.category === selectedCategory);
+    }, [blogs, selectedCategory] ); 
+
 
     const moveUrl = useNavigate();
     // handler
@@ -177,8 +176,16 @@ const BlogIndexPage = () => {
                 <ButtonRow>
                     <Button title='글 작성하기'
                             onClick={(e) => writeHandler(e)}></Button>
-                    <Button title='로그아웃'></Button>
+                    <Button title='로그아웃'
+                            onClick={(e) => {
+                                moveUrl("/");
+                            } }></Button>
                     <Button title='기상예보'></Button>
+                    <Button title='OpenAPI'
+                            onClick={(e) => {
+                                moveUrl('/openapi/index')
+                            }}></Button>
+                            
                 </ButtonRow>
 
                 <CategoryRow>
@@ -193,7 +200,7 @@ const BlogIndexPage = () => {
                     ))}
                 </CategoryRow>
 
-                <BlogList ary={filteredBlogs || []}/>
+                <BlogList ary={filteredBlogs  || []}/>
 
             </Container>
         </Wrapper>

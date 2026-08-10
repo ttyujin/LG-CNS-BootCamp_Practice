@@ -6,6 +6,7 @@ import BlogReadPage     from "./features/blog/page/BlogReadPage";
 import BlogWritePage    from "./features/blog/page/BlogWritePage";
 import SignInPage       from "./features/user/page/SignInPage";
 import SignUpPage       from "./features/user/page/SignUpPage";
+import WeatherPage      from "./features/openapi/page/WeatherPage";
 
 
 
@@ -22,7 +23,8 @@ const ToyApp = () => {
                 <Route path="/blogs/write"          element={ <BlogWritePage />} />
                 <Route path="/blogs/read/:blogId"   element={ <BlogReadPage />} />
                 
-                {/* blog - comment */}
+                {/* open api */}
+                <Route path="/openapi/index"        element={ <WeatherPage />} />
 
             </Routes>
         </BrowserRouter>

@@ -1,6 +1,5 @@
-import styled       from "styled-components";
-import BlogCommnetItem from "../item/BlogCommetItem";
-
+import styled from "styled-components";
+import BlogCommentItem from "../item/BlogCommentItem";
 
 const Wrapper = styled.div`
     display: flex;
@@ -16,16 +15,17 @@ const Wrapper = styled.div`
     gap: 16px;
 `;
 
-const BlogCommnetList=({comments,handler})=>{
-
+const BlogCommentList = ({comments, handler, updateHandler}) => {
+    
     return(
         <Wrapper>
             {
-                comments.map((comment,idx)=>{
-                    return <BlogCommnetItem
+                comments.map( (comment, idx) => {
+                    return <BlogCommentItem     
                                 key={idx}
                                 comment={comment}
-                                handler={handler}/>
+                                handler={handler}
+                                updateHandler={updateHandler} />
                 })
             }
         </Wrapper>
@@ -33,4 +33,4 @@ const BlogCommnetList=({comments,handler})=>{
 
 }
 
-export default BlogCommnetList;
+export default BlogCommentList ;
