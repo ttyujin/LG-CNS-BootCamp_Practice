@@ -106,7 +106,11 @@ const BlogWritePage = () => {
         */
         console.log(`debug >>> BlogWritePage writeHandler `);
         console.log(`debug >>> title ${title}, content ${content}, category ${category}, email ${user}`);
-        await   api.post('/blogs', {
+        // json server version
+        // await   api.post('/blogs', {
+
+        // spring boot version
+        await   api.post('/blogs/insert', {
                     title,
                     content,
                     category,

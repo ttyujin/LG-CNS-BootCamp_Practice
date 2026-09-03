@@ -107,7 +107,20 @@ const SignUpPage = () => {
         */
        
         // json-server version
-        await api.post('/users', data)
+        // await api.post('/users', data)
+        //         .then( response => {
+        //             console.log(`debug >>>> axios request success` , response);  
+        //             if( response.status === 201) {
+        //                 moveUrl('/users/signIn');
+        //             } 
+        //         })
+        //         .catch( error => {
+        //             console.log(`debug >>>> axios request error` , error); 
+        //         }) 
+
+
+        // spring boot version 
+        await api.post('/users/signUp', data)
                 .then( response => {
                     console.log(`debug >>>> axios request success` , response);  
                     if( response.status === 201) {

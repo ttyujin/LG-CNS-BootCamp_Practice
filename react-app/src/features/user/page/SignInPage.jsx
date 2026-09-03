@@ -111,18 +111,31 @@ const SignInPage = () => {
         e.preventDefault() ;
 
         // json-server version
-        await api.get(`/users?email=${form.email}&password=${form.password}`)
+        // await api.get(`/users?email=${form.email}&password=${form.password}`)
+        // spring boot version
+        // await api.get(`/users/signIn?email=${form.email}&password=${form.password}`)
+        await api.get(`/users/signIn`, {
+                params : {
+                    email : form.email,
+                    password : form.password
+                }})
                 .then( response => {
                     console.log(`debug >>>> axios request success` , response);  
+
                     if(response.status === 200) {
                         
-                        localStorage.setItem('user' , response.data[0].email) ;
+                        // localStorage.setItem('user' , response.data[0].email) ;
+                        localStorage.setItem('user' , response.data.email) ;
                         // 추후 추가작업
                         // header access token 가져오고 싶을 수 있어야함.
                         // 인증, 인가 -> JWT or spring security
 
+                        localStorage.setItem('at' , response.headers.get("Authorization")) ;
+                        localStorage.setItem('rt' , response.headers.get("Refresh-Token")) ;
+
                         moveUrl('/blogs/index') ;
                     }
+
 
                 })
                 .catch( error => {
